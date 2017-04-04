@@ -1,0 +1,33 @@
+#event-container {
+  .event-label {
+    text-transform: uppercase;
+  }
+
+  .event-details-container {
+    padding: 10px;
+  }
+
+  .event-container-img {
+    max-height: 360px;
+    margin: auto;
+    display: block;
+  }
+
+  .title:hover {
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  .general-details-container {
+    position: relative;
+    padding: 10px;
+
+    .start-time {
+      margin-bottom: 30px;
+    }
+    .price {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
