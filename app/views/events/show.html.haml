@@ -1,0 +1,28 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @event.title
+%p
+  %strong Start time:
+  = @event.start_time
+%p
+  %strong End time:
+  = @event.end_time
+%p
+  %strong Speaker:
+  = @event.speaker
+%p
+  %strong Description:
+  = @event.description
+%p
+  %strong Contact:
+  = @event.contact
+%p
+  %strong Location:
+  = @event.location
+%p
+  %strong Price:
+  = @event.price
+= link_to 'Edit', edit_event_path(@event)
+|
+= link_to 'Back', events_path
