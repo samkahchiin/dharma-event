@@ -1,28 +1,48 @@
 %p#notice= notice
-%p
-  %strong Title:
-  = @event.title
-%p
-  %strong Start time:
-  = @event.start_time
-%p
-  %strong End time:
-  = @event.end_time
-%p
-  %strong Speaker:
-  = @event.speaker
-%p
-  %strong Description:
-  = @event.description
-%p
-  %strong Contact:
-  = @event.contact
-%p
-  %strong Location:
-  = @event.location
-%p
-  %strong Price:
-  = @event.price
-= link_to 'Edit', edit_event_path(@event)
-|
-= link_to 'Back', events_path
+#event-container.container
+  .card
+    .row
+      .col-md-8
+        =image_tag "de_1.jpeg", class: "card-img-top event-container-img"
+      .col-md-4.general-details-container
+        .start-time
+          %span= @event.start_time.strftime("%h")
+          %br
+          %span= @event.start_time.strftime("%d")
+        .event-title.h4= @event.title
+        %em.organizer.small.text-muted by Dharma Drum
+        .price.text-muted
+          %span RM
+          %span= @event.price
+    .card-block
+      .row
+        .col-md-8
+          .event-details-container.col-md-12
+            %label
+              %strong.event-label Description:
+            .event-details.description= @event.description
+          .event-details-container.col-md-12
+            %label
+              %strong.event-label Speaker:
+            .event-details.speaker= @event.speaker
+          .event-details-container.col-md-12
+            %label
+              %strong.event-label Contact:
+            .event-details.contact= @event.contact
+        .col-md-4
+          .event-details-container.col-md-12
+            %label
+              %strong.event-label Date and Time:
+            .event-details.time
+              %span= @event.start_time.strftime("%F %R %P")
+              %span -
+              %br
+              %span= @event.end_time.strftime("%F %R %P")
+          .event-details-container.col-md-12
+            %label
+              %strong.event-label Location:
+            .event-details.location= @event.location
+
+      = link_to 'Edit', edit_event_path(@event)
+      |
+      = link_to 'Back', events_path
