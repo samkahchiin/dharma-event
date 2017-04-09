@@ -13,6 +13,8 @@ gem 'pg', '~> 0.18'
 gem "haml-rails", "~> 0.9"
 gem 'bootstrap', '~> 4.0.0.alpha6'
 
+gem "paperclip", "~> 5.0.0"
+
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
