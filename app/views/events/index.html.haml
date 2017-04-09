@@ -1,4 +1,3 @@
-%p#notice= notice
 %section
   .cover-img-container
     .cover-img=image_tag "meditate.jpg"
@@ -9,7 +8,7 @@
   .container
     .row
       - @events.each do |event|
-        .col-md-4.col-xs-12
+        .event-card.col-md-4.col-xs-12
           .card
             .card-block
               =image_tag "de_1.jpeg", class: "card-img-top"
