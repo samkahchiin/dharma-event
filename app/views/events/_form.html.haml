@@ -32,8 +32,6 @@
     = f.label :price
     = f.text_field :price, class: "form-control"
   .form-group
-    %label.btn.btn-secondary(for="my-file-selector" role="button")
-      Choose the Image
-      = f.file_field(:image, class: "btn btn-default", id: "my-file-selector", style: "display:none;")
+    = f.file_field(:image)
   .actions
     = f.submit "Save", class: "btn btn-secondary", role: "button"
