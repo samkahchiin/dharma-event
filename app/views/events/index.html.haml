@@ -1,6 +1,5 @@
-%section
-  .cover-img-container
-    .cover-img=image_tag "meditate.jpg"
+%section.cover-img-section
+  .cover-img
 
 %h1.root-page-title.text-center Events for you
 
@@ -16,4 +15,3 @@
               .card-subtitle= event.start_time.strftime("%a, %d %b %Y, %R %P")
               = link_to event.title, event, class: "h4 card-text event-title"
               .card-subtitle= event.location
-
