@@ -3,7 +3,7 @@
   .card
     .row
       .col-md-8
-        =image_tag "de_1.jpeg", class: "card-img-top event-container-img"
+        =image_tag @event.image.url, class: "card-img-top event-container-img"
       .col-md-4.general-details-container
         .start-time
           %span= @event.start_time.strftime("%h")
