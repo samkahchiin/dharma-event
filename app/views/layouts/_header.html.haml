@@ -1,4 +1,8 @@
-.navbar.navbar-default
+%nav.navbar.navbar-default.navbar-toggleable-md
   .container-fluid
-  .navbar-header
-    %a.navbar-brand Dharma Event
+  %a.navbar-brand(href="/") Dharma Event
+
+  #navbar.collapse.navbar-collapse
+    %ul.nav.navbar-nav.ml-auto
+      %li.nav-item
+        = link_to 'New Event', new_event_path, class: "nav-link"
