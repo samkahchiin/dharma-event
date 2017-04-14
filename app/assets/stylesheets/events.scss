@@ -17,6 +17,12 @@
     background-size: cover;
     opacity: 0.65;
   }
+
+  @media only screen and (max-width: 768px) {
+    .cover-img {
+      display: none !important;
+    }
+  }
 }
 
 .root-page-title {
