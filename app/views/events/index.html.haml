@@ -6,10 +6,10 @@
 %section
   .container
     .row
-      - @events.each do |month, events|
+      - @events.each do |sort_param, events|
         .col-sm-12
-          .month-container.well
-            %h4= month
+          .sort-param-container.well
+            %h4= sort_param
         - events.each do |event|
           .col-md-4.col-sm-12
             .event-card.panel.panel-default
