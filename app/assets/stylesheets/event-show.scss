@@ -3,6 +3,7 @@
     text-transform: uppercase;
   }
 
+  // TODO: Merge in one place
   .event-details-container {
     padding: 10px;
   }
@@ -18,16 +19,13 @@
     text-decoration: none;
   }
 
-  .general-details-container {
-    position: relative;
-    padding: 10px;
+  #start-time {
+    margin-bottom: 30px;
+  }
 
-    .start-time {
-      margin-bottom: 30px;
-    }
-    .price {
-      position: absolute;
-      bottom: 0;
+  @media only screen and (max-width: 768px) {
+    #start-time {
+      display: none !important;
     }
   }
 }

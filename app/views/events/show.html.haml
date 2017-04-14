@@ -1,36 +1,29 @@
-%p#notice= notice
+.container
+  - if notice
+    #notice.alert.alert-success= notice
+
 #event-container.container
-  .card
-    .row
-      .col-md-8
-        =image_tag @event.image.url, class: "card-img-top event-container-img"
-      .col-md-4.general-details-container
-        .start-time
-          %span= @event.start_time.strftime("%h")
-          %br
-          %span= @event.start_time.strftime("%d")
-        .event-title.h4= @event.title
-        %em.organizer.small.text-muted by Dharma Drum
-        .price.text-muted
-          %span RM
-          %span= @event.price
-    .card-block
-      .row
+  .panel.panel-default
+    .panel-body
+      .general-content-row.row
         .col-md-8
-          .event-details-container.col-md-12
-            %label
-              %strong.event-label Description:
-            .event-details.description= @event.description
-          .event-details-container.col-md-12
-            %label
-              %strong.event-label Speaker:
-            .event-details.speaker= @event.speaker
-          .event-details-container.col-md-12
-            %label
-              %strong.event-label Contact:
-            .event-details.contact= @event.contact
+          =image_tag @event.image.url, class: "card-img-top event-container-img"
         .col-md-4
-          .event-details-container.col-md-12
+          .event-details-container
+            #start-time
+              %span= @event.start_time.strftime("%h")
+              %br
+              %span= @event.start_time.strftime("%d")
+            .event-title.h4= @event.title
+            %em.organizer.small.text-muted by Dharma Drum
+          .event-details-container
+            #price.text-muted
+              %span RM
+              %span= @event.price
+    .panel-body
+      .row
+        .col-md-4.col-md-push-8.col-sm-12
+          .event-details-container
             %label
               %strong.event-label Date and Time:
             .event-details.time
@@ -38,10 +31,23 @@
               %span -
               %br
               %span= @event.end_time.strftime("%F %R %P")
-          .event-details-container.col-md-12
+          .event-details-container
             %label
               %strong.event-label Location:
             .event-details.location= @event.location
+        .col-md-8.col-md-pull-4.col-sm-12
+          .event-details-container
+            %label
+              %strong.event-label Description:
+            .event-details.description= @event.description
+          .event-details-container
+            %label
+              %strong.event-label Speaker:
+            .event-details.speaker= @event.speaker
+          .event-details-container
+            %label
+              %strong.event-label Contact:
+            .event-details.contact= @event.contact
 
       = link_to 'Edit', edit_event_path(@event)
       |

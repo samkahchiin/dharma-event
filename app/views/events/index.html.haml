@@ -7,11 +7,12 @@
   .container
     .row
       - @events.each do |event|
-        .event-card.col-md-4.col-xs-12
-          .card
-            .card-block
-              =image_tag event.image.url, class: "card-img-top"
-            .card-block
-              .card-subtitle= event.start_time.strftime("%a, %d %b %Y, %R %P")
+        .col-md-4.col-sm-12
+          .event-card.panel.panel-default
+            .panel-body.event-image
+              %a.thumbnail
+                =image_tag event.image.url, class: "card-img-top"
+            .panel-body
+              %p= event.start_time.strftime("%a, %d %b %Y, %R %P")
               = link_to event.title, event, class: "h4 card-text event-title"
-              .card-subtitle= event.location
+              %p= event.location

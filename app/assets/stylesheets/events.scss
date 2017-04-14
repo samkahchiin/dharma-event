@@ -1,5 +1,6 @@
 .cover-img-section {
   height: 100vh;
+  margin-top: -20px;
 
   .cover-img {
     min-height: 100%;
@@ -19,13 +20,23 @@
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .cover-img-section {
+    display: none !important;
+  }
+}
+
 .root-page-title {
   padding: 50px;
 }
 
-.card-img-top {
-  max-height: 100%;
-  max-width: 100%;
+.event-image {
+  width: 308px;
+  height: 435px;
+
+  img {
+    height: 100%;
+  }
 }
 
 .event-card {
