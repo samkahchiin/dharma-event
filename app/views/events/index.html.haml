@@ -6,13 +6,17 @@
 %section
   .container
     .row
-      - @events.each do |event|
-        .col-md-4.col-sm-12
-          .event-card.panel.panel-default
-            .panel-body.event-image
-              %a.thumbnail
-                =image_tag event.image.url, class: "card-img-top"
-            .panel-body
-              %p= event.start_time.strftime("%a, %d %b %Y, %R %P")
-              = link_to event.title, event, class: "h4 card-text event-title"
-              %p= event.location
+      - @events.each do |month, events|
+        .col-sm-12
+          .month-container.well
+            %h4= month
+        - events.each do |event|
+          .col-md-4.col-sm-12
+            .event-card.panel.panel-default
+              .panel-body.event-image
+                %a.thumbnail
+                  =image_tag event.image.url, class: "card-img-top"
+              .panel-body
+                %p= event.start_time.strftime("%a, %d %b %Y, %R %P")
+                = link_to event.title, event, class: "h4 card-text event-title"
+                %p= event.location
