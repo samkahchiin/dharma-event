@@ -9,29 +9,33 @@
           %li= message
   .form-group
     = f.label :title
-    = f.text_field :title, class: "form-control"
+    = f.text_field :title, class: "form-control", required: true
   .form-group
     = f.label :start_time
-    = f.datetime_select :start_time, class: "form-control"
+    = f.datetime_select :start_time, class: "form-control", required: true
   .form-group
     = f.label :end_time
-    = f.datetime_select :end_time, class: "form-control"
+    = f.datetime_select :end_time, class: "form-control", required: true
   .form-group
     = f.label :speaker
-    = f.text_field :speaker, class: "form-control"
+    = f.text_field :speaker, class: "form-control", required: true
   .form-group
     = f.label :description
-    = f.text_area :description, class: "form-control"
+    = f.text_area :description, class: "form-control", required: true
+  .form-group
+    = f.label :organizer_name
+    = f.text_field :organizer_name, class: "form-control", required: true
   .form-group
     = f.label :contact
-    = f.text_field :contact, class: "form-control"
+    = f.text_field :contact, class: "form-control", required: true
   .form-group
     = f.label :location
-    = f.text_field :location, class: "form-control"
+    = f.text_field :location, class: "form-control", required: true
   .form-group
     = f.label :price
-    = f.text_field :price, class: "form-control"
+    = f.text_field :price, class: "form-control", required: true
   .form-group
+    = f.label :event_image
     = f.file_field(:image)
   .actions
     = f.submit "Save", class: "btn btn-default", role: "button"
