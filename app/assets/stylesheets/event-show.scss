@@ -22,4 +22,10 @@
   .start-time {
     margin-bottom: 30px;
   }
+
+  @media only screen and (max-width: 768px) {
+    #start-time {
+      display: none !important;
+    }
+  }
 }

@@ -10,7 +10,7 @@
           =image_tag @event.image.url, class: "card-img-top event-container-img"
         .col-md-4
           .event-details-container
-            .start-time
+            #start-time
               %span= @event.start_time.strftime("%h")
               %br
               %span= @event.start_time.strftime("%d")
