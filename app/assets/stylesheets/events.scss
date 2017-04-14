@@ -23,9 +23,13 @@
   padding: 50px;
 }
 
-.card-img-top {
-  max-height: 100%;
-  max-width: 100%;
+.event-image {
+  width: 308px;
+  height: 435px;
+
+  img {
+    height: 100%;
+  }
 }
 
 .event-card {
