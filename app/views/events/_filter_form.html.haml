@@ -3,7 +3,10 @@
 .form-group
   = select_tag :area, options_for_select(@area), multiple: true, id: "area-filter"
 .form-group
-  #start-date-filter.datepicker
-  #end-date-filter.datepicker
+  .row
+    .col-md-6
+      %input#start-date-filter.datepicker.form-control(type="text" placeholder="From ...")
+    .col-md-6
+      %input#end-date-filter.datepicker.form-control(type="text" placeholder="Until ...")
 .form-group
   = select_tag :language, options_for_select(@language), multiple: true, id: "language-filter"

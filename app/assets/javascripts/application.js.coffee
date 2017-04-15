@@ -14,6 +14,7 @@
 #= require bootstrap-sprockets
 #= require jquery_ujs
 #= require select
+#= require datepicker
 #= require filter
 #= require turbolinks
 #= require_tree .
