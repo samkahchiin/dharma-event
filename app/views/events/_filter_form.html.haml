@@ -1,0 +1,9 @@
+- @area     = Event.pluck(:area).uniq
+- @language = Event.pluck(:language).uniq
+.form-group
+  = select_tag :area, options_for_select(@area), multiple: true, id: "area-filter"
+.form-group
+  #start-date-filter.datepicker
+  #end-date-filter.datepicker
+.form-group
+  = select_tag :language, options_for_select(@language), multiple: true, id: "language-filter"
