@@ -1,8 +1,8 @@
 $(document).ready ->
-  $("#by-location").click ->
+  $("#grouped-by-area").click ->
     $.ajax
       url: "events"
-      data: { sort_param: "location", ajax: true }
+      data: { sort_param: "area", ajax: true }
       method: "GET"
       dataType: "html"
       success: (data) ->
@@ -10,7 +10,7 @@ $(document).ready ->
       error: (jqXHR, textStatus, errorMessage) ->
         console.log "Request failed: #{textStatus} - #{errorMessage}"
 
-  $("#by-month").click ->
+  $("#grouped-by-month").click ->
     $.ajax
       url: "events"
       data: { sort_param: "month", ajax: true }
@@ -21,7 +21,7 @@ $(document).ready ->
       error: (jqXHR, textStatus, errorMessage) ->
         console.log "Request failed: #{textStatus} - #{errorMessage}"
 
-  $("#by-language").click ->
+  $("#grouped-by-language").click ->
     $.ajax
       url: "events"
       data: { sort_param: "language", ajax: true }

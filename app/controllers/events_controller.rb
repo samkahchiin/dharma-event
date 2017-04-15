@@ -6,9 +6,11 @@ class EventsController < ApplicationController
   def index
     @events = Event.order(:start_time)
     case sort_params["sort_param"]
-    when "location"
-      @events = @events.group_by { |event| event.location }
-    when "month"
+    when "area"
+      @events = @events.group_by { |event| event.area }
+    when "language"
+      @events = @events.group_by { |event| event.language }
+    else
       @events = @events.group_by { |event| event.start_time.strftime("%B, %Y") }
     end
 
