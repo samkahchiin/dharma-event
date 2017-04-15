@@ -5,18 +5,29 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.order(:start_time)
-    case sort_params["sort_param"]
-    when "area"
-      @events = @events.group_by { |event| event.area }
-    when "language"
-      @events = @events.group_by { |event| event.language }
-    else
-      @events = @events.group_by { |event| event.start_time.strftime("%B, %Y") }
-    end
 
     if to_boolean(sort_params["ajax"])
+      case sort_params["sort_param"]
+      when "area"
+        @events = @events.group_by { |event| event.area }
+      when "language"
+        @events = @events.group_by { |event| event.language }
+      end
       render "events/_event_list", layout: false
+    elsif to_boolean(sort_params["search"])
+      area       = sort_params["area"]
+      start_time = Date.parse sort_params["start_time"] if start_time.present?
+      end_time   = Date.parse sort_params["end_time"] if end_time.present?
+      language   = sort_params["language"]
+
+      @events = @events.where(area: area) if area.present?
+      @events = @events.where("start_time >= ? AND end_time <= ?", start_time, end_time) if start_time.present? && end_time.present?
+      @events = @events.where(language: language) if language.present?
+
+      render "events/_event_list_without_group", layout: false
     end
+
+    @events = @events.group_by { |event| event.start_time.strftime("%B, %Y") }
   end
 
   # GET /events/1
@@ -84,6 +95,6 @@ class EventsController < ApplicationController
     end
 
     def sort_params
-      params.permit(:sort_param, :ajax)
+      params.permit(:sort_param, :ajax, :area, :language, :start_time, :end_time, :search)
     end
 end

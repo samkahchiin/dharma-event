@@ -1,11 +1,12 @@
-%label Grouped by
-.btn-group(data-toggle="buttons")
-  %label.grouped-by-month.btn.btn-default.active
-    %input(autocomplete="off" name="options" type="radio" checked="checked")
-    Month
-  %label.grouped-by-area.btn.btn-default
-    %input(autocomplete="off" name="options" type="radio")
-    Location
-  %label.grouped-by-language.btn.btn-default
-    %input(autocomplete="off" name="options" type="radio")
-    Language
+.form-group
+  %label Grouped by
+  .btn-group(data-toggle="buttons")
+    %label.grouped-by-month.btn.btn-default.active
+      %input(autocomplete="off" name="options" type="radio" checked="checked")
+      Month
+    %label.grouped-by-area.btn.btn-default
+      %input(autocomplete="off" name="options" type="radio")
+      Location
+    %label.grouped-by-language.btn.btn-default
+      %input(autocomplete="off" name="options" type="radio")
+      Language
