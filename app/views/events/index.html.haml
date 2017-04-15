@@ -4,18 +4,18 @@
       #search-panel.panel.panel-default
         .panel-body
           %h1 Get enlightened
-          = render partial: "filter_form"
-          = render partial: "group_button"
+          = render partial: "events/index/filter_form"
+          = render partial: "events/index/group_button"
 
 .group-button-panel
   .panel.panel-default
     .panel-body
-      = render partial: "group_button"
+      = render partial: "events/index/group_button"
 
 %h1.root-page-title.text-center Events for you
 
 %section#event-list-section
-  = render partial: "event_list"
+  = render partial: "events/event_list/grouped_event_list"
 
 :javascript
   // get initial position of the element
