@@ -36,7 +36,7 @@
   padding: 10px !important;
 }
 
-.group-button-panel {
+#mobile-search-col {
   display: none;
 }
 
@@ -45,7 +45,7 @@
     display: none !important;
   }
 
-  .group-button-panel {
+  #mobile-search-col {
     display: block;
     z-index: 1;
   }

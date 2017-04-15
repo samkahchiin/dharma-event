@@ -6,8 +6,8 @@
           %h1 Get enlightened
           = render partial: "events/index/filter_form"
 
-.group-button-panel
-  .panel.panel-default
+#mobile-search-col
+  #mobile-search-panel.panel.panel-default
     .panel-body
       = render partial: "events/index/filter_form"
 
@@ -18,7 +18,7 @@
 
 :javascript
   // get initial position of the element
-  var panelPosition = $(".group-button-panel").offset().top;
+  var panelPosition = $("#mobile-search-col").offset().top;
   // assign scroll event listener
   $(window).scroll(function() {
     // get current position
@@ -26,16 +26,17 @@
     // apply position: fixed if you
     if (currentScroll >= panelPosition) {
         // scroll to that element or below it
-        $('.group-button-panel').css({
-            position: 'fixed',
-            top: '0',
-            left: '0'
+        $("#mobile-search-col").css({
+            position: "fixed",
+            top: "0",
+            left: "0",
+            width: "100%"
         });
     } else {
         // apply position: static
-        $('.group-button-panel').css({
+        $("#mobile-search-col").css({
             // if you scroll above it
-            position: 'static'
+            position: "static"
         });
     }
   });

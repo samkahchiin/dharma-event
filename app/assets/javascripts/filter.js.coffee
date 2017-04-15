@@ -32,7 +32,7 @@ $(document).ready ->
       error: (jqXHR, textStatus, errorMessage) ->
         console.log "Request failed: #{textStatus} - #{errorMessage}"
 
-  $("#filter-button").click ->
+  $(".filter-button").click ->
     selectedAreas     = $("#area-filter").val()
     selectedStartDate = $("#start-date-filter").val()
     selectedEndDate   = $("#end-date-filter").val()
