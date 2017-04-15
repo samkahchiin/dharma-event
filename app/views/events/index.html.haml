@@ -1,22 +1,40 @@
 %section.cover-img-section
   .cover-img
+    #search-col.col-md-8.col-sm-12
+      #search-panel.panel.panel-default
+        .panel-body
+          %h1#slogan Get enlightened
+          = render partial: "events/index/filter_form"
 
 %h1.root-page-title.text-center Events for you
 
-%section
-  .container
-    .row
-      - @events.each do |sort_param, events|
-        .col-sm-12
-          .sort-param-container.well
-            %h4= sort_param
-        - events.each do |event|
-          .col-md-4.col-sm-12
-            .event-card.panel.panel-default
-              .panel-body.event-image
-                %a.thumbnail
-                  =image_tag event.image.url, class: "card-img-top"
-              .panel-body
-                %p= event.start_time.strftime("%a, %d %b %Y, %R %P")
-                = link_to event.title, event, class: "h4 card-text event-title"
-                %p= event.location
+%section#event-list-section
+  = render partial: "events/event_list/grouped_event_list"
+
+:javascript
+  // NOTE: Check this https://www.fourfront.us/blog/jquery-window-width-and-media-queries
+  if ($(".cover-img").css("background-image") == "none" ) {
+    // get initial position of the element
+    var panelPosition = $("#search-col").offset().top;
+    // assign scroll event listener
+    $(window).scroll(function() {
+      // get current position
+      var currentScroll = $(window).scrollTop();
+      // apply position: fixed if you
+      if (currentScroll >= panelPosition) {
+          // scroll to that element or below it
+          $("#search-col").css({
+              position: "fixed",
+              top: "0",
+              left: "0",
+              width: "100%"
+          });
+      } else {
+          // apply position: static
+          $("#search-col").css({
+              // if you scroll above it
+              position: "static"
+          });
+      }
+    });
+  }

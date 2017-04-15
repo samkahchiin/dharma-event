@@ -4,7 +4,35 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.order(:start_time).group_by { |event| event.start_time.strftime("%B, %Y") }
+    @events = Event.order(:start_time)
+    ajax    = to_boolean(sort_params["ajax"])
+    search  = to_boolean(sort_params["search"])
+
+    if ajax
+      case sort_params["sort_param"]
+      when "area"
+        @events = @events.group_by { |event| event.area }
+      when "language"
+        @events = @events.group_by { |event| event.language }
+      else
+        @events = @events.group_by { |event| event.start_time.strftime("%B, %Y") }
+      end
+
+      render("events/event_list/_grouped_event_list", layout: false) and return
+    elsif search
+      area       = sort_params["area"]
+      start_time = Date.parse sort_params["start_time"] if sort_params["start_time"].present?
+      end_time   = Date.parse sort_params["end_time"] if sort_params["end_time"].present?
+      language   = sort_params["language"]
+
+      @events = @events.where(area: area) if area.present?
+      @events = @events.where("start_time >= ? AND end_time <= ?", start_time, end_time) if start_time.present? && end_time.present?
+      @events = @events.where(language: language) if language.present?
+
+      render("events/event_list/_event_list", layout: false) and return
+    end
+
+    @events = @events.group_by { |event| event.start_time.strftime("%B, %Y") }
   end
 
   # GET /events/1
@@ -67,8 +95,11 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:title, :start_time, :end_time, :speaker, :description, :contact, :location, :price, :image)
+    end
+
+    def sort_params
+      params.permit(:sort_param, :ajax, :area, :language, :start_time, :end_time, :search)
     end
 end
