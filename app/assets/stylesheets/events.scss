@@ -16,7 +16,15 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.65;
+  }
+}
+
+.cover-img {
+  display: flex;
+  justify-content: center;
+
+  #search-col {
+    align-self: center;
   }
 }
 
