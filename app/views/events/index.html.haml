@@ -1,15 +1,10 @@
 %section.cover-img-section
   .cover-img
-    #search-col.col-md-8
+    #search-col.col-md-8.col-sm-12
       #search-panel.panel.panel-default
         .panel-body
-          %h1 Get enlightened
+          %h1#slogan Get enlightened
           = render partial: "events/index/filter_form"
-
-#mobile-search-col
-  #mobile-search-panel.panel.panel-default
-    .panel-body
-      = render partial: "events/index/filter_form"
 
 %h1.root-page-title.text-center Events for you
 
@@ -17,26 +12,29 @@
   = render partial: "events/event_list/grouped_event_list"
 
 :javascript
-  // get initial position of the element
-  var panelPosition = $("#mobile-search-col").offset().top;
-  // assign scroll event listener
-  $(window).scroll(function() {
-    // get current position
-    var currentScroll = $(window).scrollTop();
-    // apply position: fixed if you
-    if (currentScroll >= panelPosition) {
-        // scroll to that element or below it
-        $("#mobile-search-col").css({
-            position: "fixed",
-            top: "0",
-            left: "0",
-            width: "100%"
-        });
-    } else {
-        // apply position: static
-        $("#mobile-search-col").css({
-            // if you scroll above it
-            position: "static"
-        });
-    }
-  });
+  // NOTE: Check this https://www.fourfront.us/blog/jquery-window-width-and-media-queries
+  if ($(".cover-img").css("background-image") == "none" ) {
+    // get initial position of the element
+    var panelPosition = $("#search-col").offset().top;
+    // assign scroll event listener
+    $(window).scroll(function() {
+      // get current position
+      var currentScroll = $(window).scrollTop();
+      // apply position: fixed if you
+      if (currentScroll >= panelPosition) {
+          // scroll to that element or below it
+          $("#search-col").css({
+              position: "fixed",
+              top: "0",
+              left: "0",
+              width: "100%"
+          });
+      } else {
+          // apply position: static
+          $("#search-col").css({
+              // if you scroll above it
+              position: "static"
+          });
+      }
+    });
+  }

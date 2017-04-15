@@ -21,8 +21,8 @@ class EventsController < ApplicationController
       render("events/event_list/_grouped_event_list", layout: false) and return
     elsif search
       area       = sort_params["area"]
-      start_time = Date.parse sort_params["start_time"] if start_time.present?
-      end_time   = Date.parse sort_params["end_time"] if end_time.present?
+      start_time = Date.parse sort_params["start_time"] if sort_params["start_time"].present?
+      end_time   = Date.parse sort_params["end_time"] if sort_params["end_time"].present?
       language   = sort_params["language"]
 
       @events = @events.where(area: area) if area.present?
