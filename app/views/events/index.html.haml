@@ -5,12 +5,11 @@
         .panel-body
           %h1 Get enlightened
           = render partial: "events/index/filter_form"
-          = render partial: "events/index/group_button"
 
 .group-button-panel
   .panel.panel-default
     .panel-body
-      = render partial: "events/index/group_button"
+      = render partial: "events/index/filter_form"
 
 %h1.root-page-title.text-center Events for you
 
@@ -39,5 +38,4 @@
             position: 'static'
         });
     }
-
   });
