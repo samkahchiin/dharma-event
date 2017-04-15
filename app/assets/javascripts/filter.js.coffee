@@ -1,5 +1,5 @@
 $(document).ready ->
-  $("#grouped-by-area").click ->
+  $(".grouped-by-area").click ->
     $.ajax
       url: "events"
       data: { sort_param: "area", ajax: true }
@@ -10,7 +10,7 @@ $(document).ready ->
       error: (jqXHR, textStatus, errorMessage) ->
         console.log "Request failed: #{textStatus} - #{errorMessage}"
 
-  $("#grouped-by-month").click ->
+  $(".grouped-by-month").click ->
     $.ajax
       url: "events"
       data: { sort_param: "month", ajax: true }
@@ -21,7 +21,7 @@ $(document).ready ->
       error: (jqXHR, textStatus, errorMessage) ->
         console.log "Request failed: #{textStatus} - #{errorMessage}"
 
-  $("#grouped-by-language").click ->
+  $(".grouped-by-language").click ->
     $.ajax
       url: "events"
       data: { sort_param: "language", ajax: true }

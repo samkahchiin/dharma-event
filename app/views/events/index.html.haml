@@ -4,18 +4,39 @@
       #search-panel.panel.panel-default
         .panel-body
           %h1 Get enlightened
-          .btn-group(data-toggle="buttons")
-            %label#grouped-by-month.btn.btn-default.active
-              %input(autocomplete="off" name="options" type="radio" checked="checked")
-              Grouped by month
-            %label#grouped-by-area.btn.btn-default
-              %input(autocomplete="off" name="options" type="radio")
-              Grouped by location
-            %label#grouped-by-language.btn.btn-default
-              %input(autocomplete="off" name="options" type="radio")
-              Grouped by language
+          = render partial: "group_button"
+
+.group-button-panel
+  .panel.panel-default
+    .panel-body
+      = render partial: "group_button"
 
 %h1.root-page-title.text-center Events for you
 
 %section#event-list-section
   = render partial: "event_list"
+
+:javascript
+  // get initial position of the element
+  var panelPosition = $(".group-button-panel").offset().top;
+  // assign scroll event listener
+  $(window).scroll(function() {
+    // get current position
+    var currentScroll = $(window).scrollTop();
+    // apply position: fixed if you
+    if (currentScroll >= panelPosition) {
+        // scroll to that element or below it
+        $('.group-button-panel').css({
+            position: 'fixed',
+            top: '0',
+            left: '0'
+        });
+    } else {
+        // apply position: static
+        $('.group-button-panel').css({
+            // if you scroll above it
+            position: 'static'
+        });
+    }
+
+  });

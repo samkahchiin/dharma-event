@@ -32,9 +32,18 @@
   padding: 10px !important;
 }
 
+.group-button-panel {
+  display: none;
+}
+
 @media only screen and (max-width: 768px) {
   .cover-img-section {
     display: none !important;
+  }
+
+  .group-button-panel {
+    display: block;
+    z-index: 1;
   }
 }
 
