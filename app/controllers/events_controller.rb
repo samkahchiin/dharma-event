@@ -5,16 +5,21 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.order(:start_time)
+    ajax    = to_boolean(sort_params["ajax"])
+    search  = to_boolean(sort_params["search"])
 
-    if to_boolean(sort_params["ajax"])
+    if ajax
       case sort_params["sort_param"]
       when "area"
         @events = @events.group_by { |event| event.area }
       when "language"
         @events = @events.group_by { |event| event.language }
+      else
+        @events = @events.group_by { |event| event.start_time.strftime("%B, %Y") }
       end
-      render "events/_event_list", layout: false
-    elsif to_boolean(sort_params["search"])
+
+      render("events/event_list/_grouped_event_list", layout: false) and return
+    elsif search
       area       = sort_params["area"]
       start_time = Date.parse sort_params["start_time"] if start_time.present?
       end_time   = Date.parse sort_params["end_time"] if end_time.present?
@@ -24,7 +29,7 @@ class EventsController < ApplicationController
       @events = @events.where("start_time >= ? AND end_time <= ?", start_time, end_time) if start_time.present? && end_time.present?
       @events = @events.where(language: language) if language.present?
 
-      render "events/_event_list_without_group", layout: false
+      render("events/event_list/_event_list", layout: false) and return
     end
 
     @events = @events.group_by { |event| event.start_time.strftime("%B, %Y") }
