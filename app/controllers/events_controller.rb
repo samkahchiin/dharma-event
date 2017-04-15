@@ -4,7 +4,17 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.order(:start_time).group_by { |event| event.start_time.strftime("%B, %Y") }
+    @events = Event.order(:start_time)
+    case sort_params["sort_param"]
+    when "location"
+      @events = @events.group_by { |event| event.location }
+    when "month"
+      @events = @events.group_by { |event| event.start_time.strftime("%B, %Y") }
+    end
+
+    if to_boolean(sort_params["ajax"])
+      render "events/_event_list", layout: false
+    end
   end
 
   # GET /events/1
@@ -67,8 +77,11 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:title, :start_time, :end_time, :speaker, :description, :contact, :location, :price, :image)
+    end
+
+    def sort_params
+      params.permit(:sort_param, :ajax)
     end
 end

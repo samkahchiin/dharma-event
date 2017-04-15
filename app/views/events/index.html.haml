@@ -6,28 +6,16 @@
           %h1 Get enlightened
           .btn-group(data-toggle="buttons")
             %label.btn.btn-default.active
-              %input#by-month{:autocomplete => "off", :checked => "checked", :name => "options", :type => "radio"}
+              %input#by-month(autocomplete="off" name="options" type="radio" checked="checked")
               Filtered by month
-            %label.btn.btn-default
-              %input#by-location{:autocomplete => "off", :name => "options", :type => "radio"}
+            %label#by-location.btn.btn-default
+              %input(autocomplete="off" name="options" type="radio")
               Filtered by location
+            %label#by-language.btn.btn-default
+              %input(autocomplete="off" name="options" type="radio")
+              Filtered by language
 
 %h1.root-page-title.text-center Events for you
 
-%section
-  .container
-    .row
-      - @events.each do |sort_param, events|
-        .col-sm-12
-          .sort-param-container.well
-            %h4= sort_param
-        - events.each do |event|
-          .col-md-4.col-sm-12
-            .event-card.panel.panel-default
-              .panel-body.event-image
-                %a.thumbnail
-                  =image_tag event.image.url, class: "card-img-top"
-              .panel-body
-                %p= event.start_time.strftime("%a, %d %b %Y, %R %P")
-                = link_to event.title, event, class: "h4 card-text event-title"
-                %p= event.location
+%section#event-list-section
+  = render partial: "event_list"
