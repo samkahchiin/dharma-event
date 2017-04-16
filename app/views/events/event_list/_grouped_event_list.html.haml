@@ -10,7 +10,7 @@
             .panel-body.event-image
               %a.thumbnail
                 =image_tag event.image.url, class: "card-img-top"
-            .panel-body
+            .panel-body.event-content
               %p= event.start_time.strftime("%a, %d %b %Y, %R %P")
               = link_to event.title, event, class: "h4 card-text event-title"
               %p= event.location
