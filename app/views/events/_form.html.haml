@@ -42,6 +42,12 @@
     = f.text_field :price, class: "form-control", required: true
   .form-group
     = f.label :event_image
-    = f.file_field(:image)
+    = f.file_field(:image, accept: Event::VALID_IMAGE_CONTENT_TYPE.join(", "))
+  .form-group
+    = f.label :register_link
+    = f.text_field :register_link, class: "form-control"
+  .form-group
+    = f.label :register_form
+    = f.file_field(:register_form, accept: Event::VALID_REGISTER_FORM_CONTENT_TYPE.join(", "))
   .actions
     = f.submit "Save", class: "btn btn-default", role: "button"

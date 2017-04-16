@@ -22,6 +22,9 @@
             #price.text-muted
               %span RM
               %span= @event.price
+    #register-row.panel-body
+      .col-md-offset-8.col-md-4
+        = link_to "REGISTER", @event.register_link || @event.register_form.url, target: "_blank", class: "btn btn-block btn-success"
     .panel-body
       .row
         .col-md-4.col-md-push-8.col-sm-12
@@ -45,7 +48,7 @@
           .event-details-container
             %label
               %strong.event-label Description:
-            .event-details.description= @event.description
+            .event-details.description= simple_format @event.description
           .event-details-container
             %label
               %strong.event-label Speaker:
@@ -62,3 +65,35 @@
       = link_to 'Edit', edit_event_path(@event)
       |
       = link_to 'Back', events_path
+
+:javascript
+  // TODO: Shared this method
+  // NOTE: Check this https://www.fourfront.us/blog/jquery-window-width-and-media-queries
+  if ($("#start-time").css("display") == "none" ) {
+    // get initial position of the element
+    var panelPosition = $("#register-row").offset().top;
+    // assign scroll event listener
+    $(window).scroll(function() {
+      // get current position
+      var currentScroll = $(window).scrollTop();
+      // apply position: fixed if you
+      if (currentScroll >= panelPosition) {
+          // scroll to that element or below it
+          $("#register-row").css({
+              position: "fixed",
+              bottom: "0",
+              left: "0",
+              width: "100%",
+              "background-color": "white",
+              "border-top": "solid 1px #f1f1f1",
+              "z-index": "1"
+          });
+      } else {
+          // apply position: static
+          $("#register-row").css({
+              // if you scroll above it
+              position: "static"
+          });
+      }
+    });
+  }

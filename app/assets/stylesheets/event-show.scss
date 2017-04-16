@@ -3,6 +3,11 @@
     text-transform: uppercase;
   }
 
+  .description {
+    text-align: justify;
+    word-wrap: break-word;
+  }
+
   // TODO: Merge in one place
   .event-details-container {
     padding: 10px;

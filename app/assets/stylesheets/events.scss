@@ -29,6 +29,7 @@
     }
   }
 }
+
 #search-panel {
   opacity: 0.85;
 }
@@ -75,4 +76,10 @@
 
 .event-card {
   margin-bottom: 10px;
+
+  .event-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
