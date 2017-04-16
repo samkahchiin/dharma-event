@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170415082048) do
+ActiveRecord::Schema.define(version: 20170416022114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20170415082048) do
     t.string   "contact"
     t.string   "location"
     t.integer  "price"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -33,6 +33,11 @@ ActiveRecord::Schema.define(version: 20170415082048) do
     t.string   "organizer_name"
     t.string   "area"
     t.string   "language"
+    t.string   "register_link"
+    t.string   "register_form_file_name"
+    t.string   "register_form_content_type"
+    t.integer  "register_form_file_size"
+    t.datetime "register_form_updated_at"
   end
 
 end
