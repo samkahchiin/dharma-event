@@ -45,7 +45,7 @@
     = f.file_field(:image, accept: Event::VALID_IMAGE_CONTENT_TYPE.join(", "))
   .form-group
     = f.label :register_link
-    = f.text_field :register_link, class: "form-control", required: true
+    = f.text_field :register_link, class: "form-control"
   .form-group
     = f.label :register_form
     = f.file_field(:register_form, accept: Event::VALID_REGISTER_FORM_CONTENT_TYPE.join(", "))
