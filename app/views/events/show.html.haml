@@ -7,7 +7,7 @@
     .panel-body
       .general-content-row.row
         .col-md-8
-          =image_tag @event.image.url, class: "card-img-top event-container-img"
+          =image_tag @event.image.url(:thumb), class: "card-img-top event-container-img"
         .col-md-4
           .event-details-container
             #start-time
