@@ -24,7 +24,8 @@
               %span= @event.price
     #register-row.panel-body
       .col-md-offset-8.col-md-4
-        = link_to "REGISTER", @event.register_link || @event.register_form.url, target: "_blank", class: "btn btn-block btn-success"
+        - if @event.register_link.present? || @event.register_form.exists?
+          = link_to "REGISTER", @event.register_link || @event.register_form.url, target: "_blank", class: "btn btn-block btn-success"
     .panel-body
       .row
         .col-md-4.col-md-push-8.col-sm-12
