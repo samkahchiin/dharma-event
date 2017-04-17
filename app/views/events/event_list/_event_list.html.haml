@@ -6,7 +6,7 @@
           .event-card.panel.panel-default
             .panel-body.event-image
               %a.thumbnail
-                =image_tag event.image.url, class: "card-img-top"
+                =image_tag event.image.url(:thumb), class: "card-img-top"
             .panel-body.event-content
               %p= event.start_time.strftime("%a, %d %b %Y, %R %P")
               = link_to event.title, event, class: "h4 card-text event-title"

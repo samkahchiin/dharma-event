@@ -31,7 +31,9 @@ class Event < ApplicationRecord
     "application/msword"
   ]
 
-  has_attached_file :image
+  has_attached_file :image, styles: {
+    thumb: "268x380#"
+  }, default_style: :thumb, s3_protocol: 'https'
   validates_attachment_content_type :image, content_type: VALID_IMAGE_CONTENT_TYPE
 
   has_attached_file :register_form
