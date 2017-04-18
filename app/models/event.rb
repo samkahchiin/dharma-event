@@ -1,4 +1,18 @@
 class Event < ApplicationRecord
+  include AASM
+  aasm do
+    state :pending, initial: true
+    state :approved, :rejected
+
+    event :approve do
+      transitions from: :pending, to: :approved
+    end
+
+    event :reject do
+      transitions from: :pending, to: :rejected
+    end
+  end
+
   AREA = [
     "Johor",
     "Kedah",
