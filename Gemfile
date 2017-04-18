@@ -18,7 +18,10 @@ gem 'sass-rails', '~> 5.0'
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '~> 2'
 gem "figaro"
+
 gem "administrate"
+gem "administrate-field-paperclip"
+gem "bourbon"
 
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
