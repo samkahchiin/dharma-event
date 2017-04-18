@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   namespace :admin do
-    resources :events
+    resources :events do
+      member do
+        get "approve"
+      end
+    end
 
     root to: "events#index"
   end

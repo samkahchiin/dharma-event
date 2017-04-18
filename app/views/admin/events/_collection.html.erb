@@ -87,7 +87,8 @@ to display a collection of resources in an HTML table.
             data: { confirm: t("administrate.actions.confirm") }
           ) %></td>
         <% end %>
-        <td>Approve</td>
+        <td><%= link_to( "Approve", approve_admin_event_path(resource), class: "action-edit") %></td>
+
       </tr>
     <% end %>
   </tbody>

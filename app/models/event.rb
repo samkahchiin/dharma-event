@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   include AASM
-  aasm do
+  aasm column: "status" do
     state :pending, initial: true
     state :approved, :rejected
 
@@ -52,4 +52,16 @@ class Event < ApplicationRecord
 
   has_attached_file :register_form
   validates_attachment_content_type :register_form, content_type: VALID_REGISTER_FORM_CONTENT_TYPE
+
+  def approved?
+    status == "approved"
+  end
+
+  def rejected?
+    status == "rejected"
+  end
+
+  def pending?
+    status == "pending"
+  end
 end

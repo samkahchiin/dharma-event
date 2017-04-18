@@ -14,6 +14,9 @@ module Admin
     # def find_resource(param)
     #   Event.find_by!(slug: param)
     # end
+    def approve
+      debugger
+    end
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
