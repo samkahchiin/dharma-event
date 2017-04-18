@@ -87,7 +87,7 @@ to display a collection of resources in an HTML table.
             data: { confirm: t("administrate.actions.confirm") }
           ) %></td>
         <% end %>
-        <td><%= link_to( "Approve", approve_admin_event_path(resource), class: "action-edit") %></td>
+        <td><%= link_to( "Approve", approve_admin_event_path(resource), :method => :post ) %></td>
 
       </tr>
     <% end %>

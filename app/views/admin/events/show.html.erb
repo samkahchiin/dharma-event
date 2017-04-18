@@ -30,7 +30,8 @@ as well as a link to its edit page.
   <div class="header__actions">
     <%= link_to(
       "Approve #{page.page_title}",
-      [:edit, namespace, page.resource],
+      approve_admin_event_path(page.resource),
+      :method => :post,
       class: "button",
     ) if valid_action? :edit %>
   </div>

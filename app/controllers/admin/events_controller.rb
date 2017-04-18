@@ -15,7 +15,9 @@ module Admin
     #   Event.find_by!(slug: param)
     # end
     def approve
-      debugger
+      event = Event.find params["id"]
+      event.approve!
+      redirect_to admin_events_path
     end
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions

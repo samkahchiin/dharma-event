@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :events do
       member do
-        get "approve"
+        post "approve"
       end
     end
 
