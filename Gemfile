@@ -19,6 +19,9 @@ gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '~> 2'
 gem "figaro"
 
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+
 gem 'puma', '~> 3.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
