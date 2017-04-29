@@ -6,9 +6,15 @@
 .form-group
   .row
     .col-xs-6
-      %input#start-date-filter.datepicker.form-control(type="text" placeholder="From ...")
+      #start-date-filter.datepicker.input-group.date
+        %input.form-control(type="text" placeholder="From ...")
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-calendar
     .col-xs-6
-      %input#end-date-filter.datepicker.form-control(type="text" placeholder="Until ...")
+      #end-date-filter.datepicker.input-group.date
+        %input.form-control(type="text" placeholder="To ...")
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-calendar
 .form-group
   = select_tag :language, options_for_select(@language), multiple: true, id: "language-filter", style: "width: 100%"
 
