@@ -9,7 +9,7 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      # TODO Add authentication logic here.
+      redirect_to root_url, alert: "You are not authorized" unless current_user.try(:admin)
     end
 
     # Override this value to specify the number of elements to display at a time
