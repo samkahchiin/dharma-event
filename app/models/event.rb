@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   scope :approved, -> { where(status: "approved") }
+  belongs_to :user
 
   include AASM
   aasm column: "status" do
