@@ -1,10 +1,9 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
   # GET /events
   # GET /events.json
   def index
-    @events = Event.order(:start_time)
+    @events = Event.approved.order(:start_time)
     ajax    = to_boolean(sort_params["ajax"])
     search  = to_boolean(sort_params["search"])
 

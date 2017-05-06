@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  scope :approved, -> { where(status: "approved") }
+
   include AASM
   aasm column: "status" do
     state :pending, initial: true
