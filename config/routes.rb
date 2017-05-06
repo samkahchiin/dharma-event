@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :events do
       member do
         post "approve"
+        post "reject"
       end
     end
     resources :users

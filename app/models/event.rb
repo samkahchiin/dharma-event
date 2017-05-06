@@ -9,10 +9,12 @@ class Event < ApplicationRecord
 
     event :approve do
       transitions from: :pending, to: :approved
+      transitions from: :rejected, to: :approved
     end
 
     event :reject do
       transitions from: :pending, to: :rejected
+      transitions from: :approved, to: :rejected
     end
   end
 
