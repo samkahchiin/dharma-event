@@ -24,7 +24,8 @@ class EventDashboard < Administrate::BaseDashboard
     register_link: Field::String,
     register_form: Field::Paperclip,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    updated_at: Field::DateTime,
+    status: Field::Select.with_options(collection: Event::STATUS),
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -35,8 +36,8 @@ class EventDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :title,
-    :start_time,
-    :end_time,
+    :speaker,
+    :status,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -44,6 +45,7 @@ class EventDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :title,
+    :status,
     :start_time,
     :end_time,
     :speaker,
@@ -66,6 +68,7 @@ class EventDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :title,
+    :status,
     :start_time,
     :end_time,
     :speaker,
@@ -78,7 +81,7 @@ class EventDashboard < Administrate::BaseDashboard
     :area,
     :language,
     :register_link,
-    :register_form,
+    :register_form
   ].freeze
 
   # Overwrite this method to customize how events are displayed

@@ -13,6 +13,12 @@ class Event < ApplicationRecord
     end
   end
 
+  STATUS = [
+    "pending",
+    "approved",
+    "rejected"
+  ]
+
   AREA = [
     "Johor",
     "Kedah",

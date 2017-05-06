@@ -8,13 +8,6 @@
         [:edit, namespace, page.resource],                      |
         class: "button",                                        |
       ) if valid_action? :edit                                  |
-  .header__actions
-    = link_to(                                   |
-        "Approve #{page.page_title}",            |
-        approve_admin_event_path(page.resource), |
-        :method => :post,                        |
-        class: "button",                         |
-      ) if valid_action? :edit                   |
 %dl
   - page.attributes.each do |attribute|
     %dt.attribute-label
