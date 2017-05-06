@@ -10,4 +10,7 @@
     #main-collapse-navbar.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li
-          = link_to 'New Event', new_event_path
+          - if current_user
+            = link_to "New Event", new_event_path
+          - else
+            = link_to "New Event", new_user_session_path
