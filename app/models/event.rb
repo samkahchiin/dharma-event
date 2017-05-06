@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   scope :approved, -> { where(status: "approved") }
+  belongs_to :user
 
   include AASM
   aasm column: "status" do
@@ -8,10 +9,12 @@ class Event < ApplicationRecord
 
     event :approve do
       transitions from: :pending, to: :approved
+      transitions from: :rejected, to: :approved
     end
 
     event :reject do
       transitions from: :pending, to: :rejected
+      transitions from: :approved, to: :rejected
     end
   end
 

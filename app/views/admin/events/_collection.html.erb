@@ -31,6 +31,7 @@
         <th scope="col"></th>
       <% end %>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -68,7 +69,7 @@
           ) %></td>
         <% end %>
         <td><%= link_to( "Approve", approve_admin_event_path(resource), method: :post ) %></td>
-
+        <td><%= link_to( "Reject", reject_admin_event_path(resource), method: :post ) %></td>
       </tr>
     <% end %>
   </tbody>

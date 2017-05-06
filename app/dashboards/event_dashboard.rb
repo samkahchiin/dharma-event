@@ -26,6 +26,7 @@ class EventDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     status: Field::Select.with_options(collection: Event::STATUS),
+    user: Field::BelongsTo
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -36,7 +37,7 @@ class EventDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :title,
-    :speaker,
+    :user,
     :status,
   ].freeze
 
@@ -61,6 +62,7 @@ class EventDashboard < Administrate::BaseDashboard
     :language,
     :register_link,
     :register_form,
+    :user
   ].freeze
 
   # FORM_ATTRIBUTES

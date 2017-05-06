@@ -20,6 +20,12 @@ module Admin
       redirect_to admin_events_path
     end
 
+    def reject
+      event = Event.find params["id"]
+      event.reject!
+      redirect_to admin_events_path
+    end
+
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
   end
