@@ -1,0 +1,25 @@
+- content_for(:title) { "#{t("administrate.actions.show")} #{page.page_title}" }
+
+%header.header
+  %h1.header__heading= content_for(:title)
+  .header__actions
+    = link_to(                                                  |
+        "#{t("administrate.actions.edit")} #{page.page_title}", |
+        [:edit, namespace, page.resource],                      |
+        class: "button",                                        |
+      ) if valid_action? :edit                                  |
+  .header__actions
+    = link_to(                                   |
+        "Approve #{page.page_title}",            |
+        approve_admin_event_path(page.resource), |
+        :method => :post,                        |
+        class: "button",                         |
+      ) if valid_action? :edit                   |
+%dl
+  - page.attributes.each do |attribute|
+    %dt.attribute-label
+      = t(                                                    |
+          "helpers.label.#{resource_name}.#{attribute.name}", |
+          default: attribute.name.titleize,                   |
+        )                                                     |
+    %dd{:class => "attribute-data attribute-data--#{attribute.html_class}"}= render_field attribute
