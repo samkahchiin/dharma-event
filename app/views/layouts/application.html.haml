@@ -14,4 +14,10 @@
 
   %body
     = render "layouts/header"
+    - if notice || alert
+      .col-md-12
+        - if notice
+          .notice.alert.alert-info= notice
+        - if alert
+          .alert.alert-danger= alert
     = yield
