@@ -6,7 +6,7 @@ Rails.application.routes.draw do
         post "approve"
       end
     end
-
+    resources :users
     root to: "events#index"
   end
 
