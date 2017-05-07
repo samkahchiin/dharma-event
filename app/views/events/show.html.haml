@@ -63,9 +63,9 @@
               %strong.event-label Contact:
             .event-details.contact= @event.contact
 
-      = link_to 'Edit', edit_event_path(@event)
-      |
-      = link_to 'Back', events_path
+      - if @event.user == current_user
+        = button_to "Edit", edit_event_path(@event), method: :get, class: "btn btn-default", form: { style: 'display:inline-block;' }
+        = button_to "Delete", event_path(@event), method: :delete, class: "btn btn-default", form: { style: 'display:inline-block;' }, data: { confirm: "Are you sure?" }
 
 :javascript
   // TODO: Shared this method

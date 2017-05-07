@@ -1,6 +1,6 @@
 .container
+  .pull-right
+    = button_to "Show", @event, method: :get, class: "btn btn-default", form: { style: 'display:inline-block;' }
+    = button_to "Back", events_path, method: :get, class: "btn btn-default", form: { style: 'display:inline-block;' }
   %h1 Editing Event
   = render 'form', event: @event
-  = link_to 'Show', @event
-  |
-  = link_to 'Back', events_path
