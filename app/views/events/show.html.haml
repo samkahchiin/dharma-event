@@ -7,7 +7,8 @@
     .panel-body
       .general-content-row.row
         .col-md-8
-          =image_tag @event.image.url(:thumb), class: "card-img-top event-container-img"
+          %a#event-image(href="#")
+            =image_tag @event.image.url(:thumb), class: "card-img-top event-container-img"
         .col-md-4
           .event-details-container
             #start-time
@@ -67,8 +68,26 @@
         = button_to "Edit", edit_event_path(@event), method: :get, class: "btn btn-default", form: { style: 'display:inline-block;' }
         = button_to "Delete", event_path(@event), method: :delete, class: "btn btn-default", form: { style: 'display:inline-block;' }, data: { confirm: "Are you sure?" }
 
+#image-modal.modal.fade(aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1")
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close(data-dismiss="modal" type="button")
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Close
+      .modal-body
+        %img#image-preview.img-responsive.center-block(src="")
+
 :javascript
-  // TODO: Shared this method
+  $("#event-image").on("click", function() {
+    url = $(".event-container-img").attr("src");
+    if (url.match(/thumb/)) {
+      url = url.replace("thumb", "original");
+    }
+    $("#image-preview").attr("src", url);
+    $("#image-modal").modal("show");
+  });
+
   // NOTE: Check this https://www.fourfront.us/blog/jquery-window-width-and-media-queries
   if ($("#start-time").css("display") == "none" ) {
     // get initial position of the element
