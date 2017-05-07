@@ -26,7 +26,11 @@
     - if notice || alert
       .col-md-12
         - if notice
-          .notice.alert.alert-info= notice
+          .notice.alert.alert-info.alert-dismissable
+            = notice
+            %a.close(href="#" data-dismiss="alert" aria-label="close") &times;
         - if alert
-          .alert.alert-danger= alert
+          .alert.alert-danger.alert-dismissable
+            = alert
+            %a.close(href="#" data-dismiss="alert" aria-label="close") &times;
     = yield
