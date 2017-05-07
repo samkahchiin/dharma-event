@@ -1,0 +1,9 @@
+#navbar-bordered {
+  .navbar-brand {
+    border-right: 1px solid #f8f8f8;
+  }
+  background-color: transparent;
+  .navbar-right li{
+    border-left: 1px solid #f8f8f8;
+  }
+}
