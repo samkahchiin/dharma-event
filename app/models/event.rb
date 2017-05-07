@@ -58,10 +58,10 @@ class Event < ApplicationRecord
 
   has_attached_file :image, styles: {
     thumb: "268x380#"
-  }, default_style: :thumb, s3_protocol: 'https'
+  }, default_style: :thumb, s3_protocol: 'https', default_url: "missing.jpeg"
   validates_attachment_content_type :image, content_type: VALID_IMAGE_CONTENT_TYPE
 
-  has_attached_file :register_form
+  has_attached_file :register_form, default_url: "missing.jpeg"
   validates_attachment_content_type :register_form, content_type: VALID_REGISTER_FORM_CONTENT_TYPE
 
   def approved?
