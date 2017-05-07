@@ -99,6 +99,6 @@ class EventsController < ApplicationController
     end
 
     def sort_params
-      params.permit(:sort_param, :ajax, :area, :language, :start_time, :end_time, :search)
+      params.permit(:sort_param, :ajax, :start_time, :end_time, :search, area: [], language: [])
     end
 end
