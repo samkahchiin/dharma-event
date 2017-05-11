@@ -52,7 +52,8 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    modified_params = convert_datetime_params event_params
+    @event = Event.new(modified_params)
     @event.user = current_user
 
     respond_to do |format|
@@ -69,8 +70,9 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    modified_params = convert_datetime_params event_params
     respond_to do |format|
-      if @event.update(event_params)
+      if @event.update(modified_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
@@ -102,6 +104,12 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:event).permit(:title, :start_time, :end_time, :speaker, :description, :contact, :location, :price, :image, :language, :organizer_name, :area, :register_form, :register_link)
+    end
+
+    def convert_datetime_params event_params
+      event_params[:start_time] = DateTime.strptime event_params[:start_time], "%m/%d/%Y %I:%M %p"
+      event_params[:end_time] = DateTime.strptime event_params[:end_time], "%m/%d/%Y %I:%M %p"
+      event_params
     end
 
     def sort_params
