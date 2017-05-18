@@ -24,6 +24,9 @@ gem "administrate-field-paperclip"
 gem "bourbon"
 gem "aasm"
 
+gem "react-rails"
+gem "webpacker"
+
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
