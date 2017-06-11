@@ -103,7 +103,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:title, :start_time, :end_time, :speaker, :description, :contact, :location, :price, :image, :language, :organizer_name, :area, :register_form, :register_link)
+      params.require(:event).permit(:title, :start_time, :end_time, :speaker, :description, :contact, :location, :image, :language, :organizer_name, :area, :register_form, :register_link, prices_attributes: [:id, :price_type, :amount])
     end
 
     def convert_datetime_params event_params

@@ -44,8 +44,13 @@
     = f.label :state
     = f.select :area, Event::AREA, class: "form-control", required: true
   .form-group
-    = f.label :price
-    = f.text_field :price, class: "form-control", required: true
+    = f.fields_for :prices, Price.new do |price_fields|
+      .form-group
+        = price_fields.label :price_type
+        = price_fields.text_field :price_type, class: "form-control", required: true
+      .form-group
+        = price_fields.label :amount
+        = price_fields.text_field :amount, class: "form-control", required: true
   .form-group
     = f.label :event_image
     = f.file_field(:image, accept: Event::VALID_IMAGE_CONTENT_TYPE.join(", "))
