@@ -103,7 +103,22 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:title, :start_time, :end_time, :speaker, :description, :contact, :location, :image, :language, :organizer_name, :area, :register_form, :register_link, prices_attributes: [:id, :price_type, :amount])
+      params.require(:event).permit(
+        :title,
+        :start_time,
+        :end_time,
+        :speaker,
+        :description,
+        :contact,
+        :location,
+        :image,
+        :language,
+        :organizer_name,
+        :area,
+        :register_form,
+        :register_link,
+        prices_attributes: [:id, :price_type, :amount, :_destroy]
+      )
     end
 
     def convert_datetime_params event_params
@@ -113,6 +128,14 @@ class EventsController < ApplicationController
     end
 
     def sort_params
-      params.permit(:sort_param, :ajax, :start_time, :end_time, :search, area: [], language: [])
+      params.permit(
+        :sort_param,
+        :ajax,
+        :start_time,
+        :end_time,
+        :search,
+        area: [],
+        language: []
+      )
     end
 end
