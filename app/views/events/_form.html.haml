@@ -43,13 +43,10 @@
   .form-group
     = f.label :state
     = f.select :area, Event::AREA, class: "form-control", required: true
-  .form-group.row
-    = f.fields_for :prices, Price.new do |price_fields|
-      .col-xs-2
-        = price_fields.label :price
-        = price_fields.select :price_type, Price::TYPE, class:"form-control", required: true
-      .col-xs-3
-        = price_fields.text_field :amount, class: "form-control", required: true, placeholder: "Amount"
+  .form-group
+    = f.fields_for :prices do |f|
+      = render "price_fields", f: f
+    = link_to_add_fields "Add Price", f, :prices, nil, { class: "btn btn-default" }
   .form-group
     = f.label :event_image
     = f.file_field(:image, accept: Event::VALID_IMAGE_CONTENT_TYPE.join(", "))
