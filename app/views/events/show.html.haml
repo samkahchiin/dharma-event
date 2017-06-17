@@ -23,6 +23,11 @@
                   %span :
                   %span RM
                   %span= price.amount
+
+          - if @event.user == current_user || current_user.admin?
+            = button_to "Edit", edit_event_path(@event), method: :get, class: "btn btn-default", form: { style: 'display:inline-block;' }
+            = button_to "Delete", event_path(@event), method: :delete, class: "btn btn-default", form: { style: 'display:inline-block;' }, data: { confirm: "Are you sure?" }
+
     #register-row.panel-body
       .col-md-offset-8.col-md-4
         - if @event.register_link.present? || @event.register_form.exists?
@@ -63,10 +68,6 @@
             %label
               %strong.event-label Contact:
             .event-details.contact= @event.contact
-
-      - if @event.user == current_user
-        = button_to "Edit", edit_event_path(@event), method: :get, class: "btn btn-default", form: { style: 'display:inline-block;' }
-        = button_to "Delete", event_path(@event), method: :delete, class: "btn btn-default", form: { style: 'display:inline-block;' }, data: { confirm: "Are you sure?" }
 
 #image-modal.modal.fade(aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1")
   .modal-dialog
