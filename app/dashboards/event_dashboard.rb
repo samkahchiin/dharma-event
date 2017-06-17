@@ -16,7 +16,7 @@ class EventDashboard < Administrate::BaseDashboard
     description: Field::Text,
     contact: Field::String,
     location: Field::String,
-    price: Field::Number,
+    prices: Field::HasManyWithoutLink,
     image: Field::Paperclip,
     organizer_name: Field::String,
     area: Field::Select.with_options(collection: Event::AREA),
@@ -29,11 +29,7 @@ class EventDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo
   }.freeze
 
-  # COLLECTION_ATTRIBUTES
-  # an array of attributes that will be displayed on the model's index page.
-  #
-  # By default, it's limited to four items to reduce clutter on index pages.
-  # Feel free to add, remove, or rearrange items.
+  # COLLECTION_ATTRIBUTES - Index page.
   COLLECTION_ATTRIBUTES = [
     :id,
     :title,
@@ -41,8 +37,7 @@ class EventDashboard < Administrate::BaseDashboard
     :status,
   ].freeze
 
-  # SHOW_PAGE_ATTRIBUTES
-  # an array of attributes that will be displayed on the model's show page.
+  # SHOW_PAGE_ATTRIBUTES - Show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :title,
@@ -53,7 +48,7 @@ class EventDashboard < Administrate::BaseDashboard
     :description,
     :contact,
     :location,
-    :price,
+    :prices,
     :created_at,
     :updated_at,
     :image,
@@ -65,9 +60,8 @@ class EventDashboard < Administrate::BaseDashboard
     :user
   ].freeze
 
-  # FORM_ATTRIBUTES
-  # an array of attributes that will be displayed
-  # on the model's form (`new` and `edit`) pages.
+  # FORM_ATTRIBUTES - Form page
+  # `new` and `edit` pages
   FORM_ATTRIBUTES = [
     :title,
     :status,
@@ -77,7 +71,6 @@ class EventDashboard < Administrate::BaseDashboard
     :description,
     :contact,
     :location,
-    :price,
     :image,
     :organizer_name,
     :area,

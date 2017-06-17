@@ -1,0 +1,6 @@
+- unless field.to_s.blank?
+  - field.to_s.each do |data|
+    %div
+      %span.bold= data.price_type
+      %span : RM
+      %span= data.amount
