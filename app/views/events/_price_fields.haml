@@ -1,0 +1,9 @@
+.row
+  .col-xs-2
+    = f.label :price
+    = f.select :price_type, Price::TYPE, class:"form-control"
+  .col-xs-3
+    = f.text_field :amount, class: "form-control", placeholder: "Amount"
+  .col-xs-3
+    = f.check_box :_destroy
+    = f.label :delete

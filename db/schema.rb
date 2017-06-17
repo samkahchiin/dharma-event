@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506131952) do
+ActiveRecord::Schema.define(version: 20170611031248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20170506131952) do
     t.text     "description"
     t.string   "contact"
     t.string   "location"
-    t.integer  "price"
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
     t.string   "image_file_name"
@@ -41,6 +40,15 @@ ActiveRecord::Schema.define(version: 20170506131952) do
     t.string   "status",                     default: "pending"
     t.integer  "user_id"
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.string   "price_type"
+    t.integer  "amount"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_prices_on_event_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

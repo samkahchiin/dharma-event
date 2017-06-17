@@ -38,14 +38,15 @@
     = f.label :contact
     = f.text_field :contact, class: "form-control", required: true
   .form-group
-    = f.label :location
+    = f.label :address
     = f.text_field :location, class: "form-control", required: true
   .form-group
     = f.label :state
     = f.select :area, Event::AREA, class: "form-control", required: true
   .form-group
-    = f.label :price
-    = f.text_field :price, class: "form-control", required: true
+    = f.fields_for :prices do |f|
+      = render "price_fields", f: f
+    = link_to_add_fields "Add Price", f, :prices, nil, { class: "btn btn-default" }
   .form-group
     = f.label :event_image
     = f.file_field(:image, accept: Event::VALID_IMAGE_CONTENT_TYPE.join(", "))

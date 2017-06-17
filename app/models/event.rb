@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
   scope :approved, -> { where(status: "approved") }
   belongs_to :user
+  has_many :prices
+  accepts_nested_attributes_for :prices, reject_if: :all_blank, allow_destroy: true
 
   include AASM
   aasm column: "status" do

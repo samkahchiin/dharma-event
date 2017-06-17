@@ -17,8 +17,12 @@
               %span=@event.organizer_name
           .event-details-container
             #price.text-muted
-              %span RM
-              %span= @event.price
+              - @event.prices.each do |price|
+                %p
+                  %span.text-capitalize= price.price_type
+                  %span :
+                  %span RM
+                  %span= price.amount
     #register-row.panel-body
       .col-md-offset-8.col-md-4
         - if @event.register_link.present? || @event.register_form.exists?
