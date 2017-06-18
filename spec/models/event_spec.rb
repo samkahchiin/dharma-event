@@ -21,13 +21,46 @@ RSpec.describe Event, type: :model do
   it { is_expected.to validate_presence_of(:language) }
   it { is_expected.to validate_presence_of(:status) }
 
-  describe "approve" do
-    let!(:pending_events)  { create_list(:event, 2) }
-    let!(:approved_events) { create_list(:event, 2, :approved) }
-    let!(:rejected_events) { create_list(:event, 2, :rejected) }
+  let!(:pending_events)  { create_list(:event, 2) }
+  let!(:approved_events) { create_list(:event, 2, :approved) }
+  let!(:rejected_events) { create_list(:event, 2, :rejected) }
 
+  describe "approve" do
     it "will show all the approved events" do
       expect(Event.approved).to eq approved_events
+    end
+  end
+
+  describe "approved?" do
+    it "will show true when the event is approved" do
+      expect(approved_events.first.approved?).to eq true
+    end
+
+    it "will show false when the event is not approved" do
+      expect(pending_events.first.approved?).to eq false
+      expect(rejected_events.first.approved?).to eq false
+    end
+  end
+
+  describe "rejected?" do
+    it "will show true when the event is rejected" do
+      expect(rejected_events.first.rejected?).to eq true
+    end
+
+    it "will show false when the event is not rejected" do
+      expect(pending_events.first.rejected?).to eq false
+      expect(approved_events.first.rejected?).to eq false
+    end
+  end
+
+  describe "pending?" do
+    it "will show true when the event is pending" do
+      expect(pending_events.first.pending?).to eq true
+    end
+
+    it "will show false when the event is not pending" do
+      expect(rejected_events.first.pending?).to eq false
+      expect(approved_events.first.pending?).to eq false
     end
   end
 end
