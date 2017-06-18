@@ -12,7 +12,7 @@
     = f.text_field :title, class: "form-control", required: true
   .form-group
     = f.label :language
-    = f.select :language, Event::LANGUAGE, class: "form-control", required: true
+    = f.select :language, Event::LANGUAGES.values, class: "form-control", required: true
   .form-group
     = f.label :start_time
     .datetimepicker.input-group.date
@@ -42,7 +42,7 @@
     = f.text_field :location, class: "form-control", required: true
   .form-group
     = f.label :state
-    = f.select :area, Event::AREA, class: "form-control", required: true
+    = f.select :area, Event::AREAS, class: "form-control", required: true
   .form-group
     = f.fields_for :prices do |f|
       = render "price_fields", f: f

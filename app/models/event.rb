@@ -11,7 +11,7 @@ class Event < ApplicationRecord
     rejected: "rejected"
   }
 
-  AREA = [
+  AREAS = [
     "Johor",
     "Kedah",
     "Kelantan",
@@ -30,12 +30,15 @@ class Event < ApplicationRecord
     "Terengganu"
   ].freeze
 
-  LANGUAGE = [ "Mandarin" , "English" ].freeze
+  LANGUAGES = {
+    mandarin: "中文" ,
+    english: "English"
+  }
 
   scope :approved, -> { where(status: STATUSES[:approved]) }
   validates :status, inclusion: STATUSES.values
-  validates :area, inclusion: AREA
-  validates :language, inclusion: LANGUAGE
+  validates :area, inclusion: AREAS
+  validates :language, inclusion: LANGUAGES.values
   validates :title, :start_time, :end_time,
     :speaker, :description, :contact, :location,
     :organizer_name, :area, :language, :status, presence: true

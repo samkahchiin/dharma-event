@@ -5,8 +5,8 @@ RSpec.describe Event, type: :model do
   it { is_expected.to have_many(:prices) }
   it { is_expected.to accept_nested_attributes_for(:prices).allow_destroy(true) }
   it { is_expected.to validate_inclusion_of(:status).in_array(Event::STATUSES.values) }
-  it { is_expected.to validate_inclusion_of(:area).in_array(Event::AREA) }
-  it { is_expected.to validate_inclusion_of(:language).in_array(Event::LANGUAGE) }
+  it { is_expected.to validate_inclusion_of(:area).in_array(Event::AREAS) }
+  it { is_expected.to validate_inclusion_of(:language).in_array(Event::LANGUAGES.values) }
 
   it { is_expected.to validate_presence_of(:language) }
   it { is_expected.to validate_presence_of(:title) }

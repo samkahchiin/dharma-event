@@ -8,9 +8,9 @@ FactoryGirl.define do
     description    { Faker::Lorem.sentence }
     contact        { Faker::PhoneNumber.cell_phone }
     location       { Faker::Address.street_address }
-    area           { Event::AREA.sample }
+    area           { Event::AREAS.sample }
     organizer_name { Faker::Name.name_with_middle }
-    language       { Event::LANGUAGE.sample }
+    language       { Event::LANGUAGES.values.sample }
     status         { Event::STATUSES[:pending] }
     register_link  { Faker::Internet.url }
     prices         { create_list(:price, 2) }
