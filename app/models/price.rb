@@ -1,5 +1,5 @@
 class Price < ApplicationRecord
-  TYPE = [
+  TYPES = [
     "Public",
     "Member",
     "Non-member",
@@ -7,5 +7,5 @@ class Price < ApplicationRecord
     "Other"
   ].freeze
   validates :price_type, :amount, presence: true
-  validates :price_type, inclusion: TYPE
+  validates :price_type, inclusion: TYPES
 end
