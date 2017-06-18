@@ -41,14 +41,14 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'byebug', platform: :mri
+  gem "byebug", platform: :mri
+  gem "factory_girl_rails"
+  gem "faker"
 end
 
 group :development do
@@ -59,6 +59,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rspec-rails'
+end
+
+group :test do
+  gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers.git", branch: 'rails-5'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

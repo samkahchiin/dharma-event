@@ -15,8 +15,8 @@ location = "冼都斯里兰卡佛寺"
 price = 40
 5.times do |event|
   month = rand(12)
-  area = Event::AREA.sample
-  language = Event::LANGUAGE.sample
+  area = Event::AREAS.sample
+  language = Event::LANGUAGES.values.sample
   start_time = Date.new(2017, month, 27)
   end_time = Date.new(2017, month, 28)
 

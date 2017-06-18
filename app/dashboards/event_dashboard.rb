@@ -19,13 +19,13 @@ class EventDashboard < Administrate::BaseDashboard
     prices: Field::HasManyWithoutLink,
     image: Field::Paperclip,
     organizer_name: Field::String,
-    area: Field::Select.with_options(collection: Event::AREA),
-    language: Field::Select.with_options(collection: Event::LANGUAGE),
+    area: Field::Select.with_options(collection: Event::AREAS),
+    language: Field::Select.with_options(collection: Event::LANGUAGES.values),
     register_link: Field::String,
     register_form: Field::Paperclip,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    status: Field::Select.with_options(collection: Event::STATUS),
+    status: Field::Select.with_options(collection: Event::STATUSES.values),
     user: Field::BelongsTo
   }.freeze
 
