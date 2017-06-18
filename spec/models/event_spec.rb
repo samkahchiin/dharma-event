@@ -22,8 +22,12 @@ RSpec.describe Event, type: :model do
   it { is_expected.to validate_presence_of(:status) }
 
   describe "approve" do
-    it "will show all the approved events" do
+    let!(:pending_events)  { create_list(:event, 2) }
+    let!(:approved_events) { create_list(:event, 2, :approved) }
+    let!(:rejected_events) { create_list(:event, 2, :rejected) }
 
+    it "will show all the approved events" do
+      expect(Event.approved).to eq approved_events
     end
   end
 end

@@ -11,8 +11,16 @@ FactoryGirl.define do
     area           { Event::AREA.sample }
     organizer_name { Faker::Name.name_with_middle }
     language       { Event::LANGUAGE.sample }
-    status         { Event::STATUS.sample }
+    status         { "pending" }
     register_link  { Faker::Internet.url }
     prices         { create_list(:price, 2) }
+  end
+
+  trait :approved do
+    status { "approved" }
+  end
+
+  trait :rejected do
+    status { "rejected" }
   end
 end
