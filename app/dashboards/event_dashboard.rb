@@ -25,7 +25,7 @@ class EventDashboard < Administrate::BaseDashboard
     register_form: Field::Paperclip,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    status: Field::Select.with_options(collection: Event::STATUS),
+    status: Field::Select.with_options(collection: Event::STATUSES.values),
     user: Field::BelongsTo
   }.freeze
 

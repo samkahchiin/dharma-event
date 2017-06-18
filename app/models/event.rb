@@ -5,13 +5,11 @@ class Event < ApplicationRecord
     reject_if: :all_blank,
     allow_destroy: true
 
-  scope :approved, -> { where(status: "approved") }
-
-  STATUS = [
-    "pending",
-    "approved",
-    "rejected"
-  ].freeze
+  STATUSES = {
+    pending: "pending",
+    approved: "approved",
+    rejected: "rejected"
+  }
 
   AREA = [
     "Johor",
@@ -34,7 +32,8 @@ class Event < ApplicationRecord
 
   LANGUAGE = [ "Mandarin" , "English" ].freeze
 
-  validates :status, inclusion: STATUS
+  scope :approved, -> { where(status: STATUSES[:approved]) }
+  validates :status, inclusion: STATUSES.values
   validates :area, inclusion: AREA
   validates :language, inclusion: LANGUAGE
   validates :title, :start_time, :end_time,
@@ -81,14 +80,14 @@ class Event < ApplicationRecord
 
 
   def approved?
-    status == "approved"
+    status == STATUSES[:approved]
   end
 
   def rejected?
-    status == "rejected"
+    status == STATUSES[:rejected]
   end
 
   def pending?
-    status == "pending"
+    status == STATUSES[:pending]
   end
 end
