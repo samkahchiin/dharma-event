@@ -20,4 +20,10 @@ RSpec.describe Event, type: :model do
   it { is_expected.to validate_presence_of(:organizer_name) }
   it { is_expected.to validate_presence_of(:language) }
   it { is_expected.to validate_presence_of(:status) }
+
+  describe "approve" do
+    it "will show all the approved events" do
+
+    end
+  end
 end
