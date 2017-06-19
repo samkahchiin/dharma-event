@@ -24,7 +24,7 @@
                   %span RM
                   %span= price.amount
 
-          - if @event.user == current_user || current_user.admin?
+          - if @event.user == current_user || current_user.try(:admin?)
             = button_to "Edit", edit_event_path(@event), method: :get, class: "btn btn-default", form: { style: 'display:inline-block;' }
             = button_to "Delete", event_path(@event), method: :delete, class: "btn btn-default", form: { style: 'display:inline-block;' }, data: { confirm: "Are you sure?" }
 
