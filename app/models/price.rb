@@ -1,4 +1,5 @@
 class Price < ApplicationRecord
+  # TODO: Put this in dictionary
   TYPES = [
     "Public",
     "Member",
