@@ -59,6 +59,8 @@ RSpec.configure do |config|
   # DatabaseCleaner
   config.use_transactional_fixtures = false
   config.before(:each, js: true) do
+    # NOTE: Cleaning the data by empty the table
+    # Other options: transaction, deletion
     DatabaseCleaner.strategy = :truncation
   end
 
