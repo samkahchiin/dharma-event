@@ -11,6 +11,6 @@
               %a.thumbnail
                 =image_tag event.image.url(:thumb), class: "card-img-top"
             .panel-body.event-content.truncate
-              %p= event.start_time.strftime("%a, %d %b %Y, %R %P")
-              = link_to event.title, event, class: "h4 card-text event-title"
-              %p.truncate= event.location
+              %p.start-time= event.start_time.strftime("%a, %d %b %Y, %R %P")
+              .title= link_to event.title, event, class: "h4 card-text event-title"
+              %p.location.truncate= event.location

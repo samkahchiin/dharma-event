@@ -2,8 +2,8 @@ FactoryGirl.define do
   factory :event do
     user
     title          { Faker::Book.title }
-    start_time     { 1.week.ago }
-    end_time       { 3.days.ago }
+    start_time     { Date.today + 1.week }
+    end_time       { Date.today + 2.week }
     speaker        { Faker::Superhero.name }
     description    { Faker::Lorem.sentence }
     contact        { Faker::PhoneNumber.cell_phone }
