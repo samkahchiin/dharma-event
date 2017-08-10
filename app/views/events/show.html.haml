@@ -7,22 +7,21 @@
             =image_tag @event.image.url(:thumb), class: "card-img-top event-container-img"
         .col-md-4
           .event-details-container
-            #start-time
+            .start-time
               %span= @event.start_time.strftime("%h")
               %br
               %span= @event.start_time.strftime("%d")
-            .event-title.h4= @event.title
-            %em.organizer.small.text-muted
+            #title.h4= @event.title
+            %em#organizer.small.text-muted
               %span by
               %span=@event.organizer_name
           .event-details-container
-            #price.text-muted
-              - @event.prices.each do |price|
-                %p
-                  %span.text-capitalize= price.price_type
-                  %span :
-                  %span RM
-                  %span= price.amount
+            - @event.prices.each do |price|
+              %p.price.text-muted
+                %span.price-type.text-capitalize= price.price_type
+                %span :
+                %span RM
+                %span.amount= price.amount
 
           - if @event.user == current_user || current_user.try(:admin?)
             = button_to "Edit", edit_event_path(@event), method: :get, class: "btn btn-default", form: { style: 'display:inline-block;' }
@@ -33,16 +32,16 @@
         - if @event.register_link.present? || @event.register_form.exists?
           = link_to "REGISTER", @event.register_link || @event.register_form.url, target: "_blank", class: "btn btn-block btn-success"
     .panel-body
-      .row
+      .detailed-content-row.row
         .col-md-4.col-md-push-8.col-sm-12
           .event-details-container
             %label
               %strong.event-label Date and Time:
             .event-details.time
-              %span= @event.start_time.strftime("%F %R %P")
+              %span.start-time= @event.start_time.strftime("%F %R %P")
               %span -
               %br
-              %span= @event.end_time.strftime("%F %R %P")
+              %span.end-time= @event.end_time.strftime("%F %R %P")
           .event-details-container
             %label
               %strong.event-label Location:
@@ -50,24 +49,24 @@
           .event-details-container
             %label
               %strong.event-label State:
-            .event-details.area= @event.area
+            #area.event-details= @event.area
         .col-md-8.col-md-pull-4.col-sm-12
           .event-details-container
             %label
               %strong.event-label Description:
-            .event-details.description= simple_format @event.description
+            #description.event-details= simple_format @event.description
           .event-details-container
             %label
               %strong.event-label Speaker:
-            .event-details.speaker= @event.speaker
+            #speaker.event-details= @event.speaker
           .event-details-container
             %label
               %strong.event-label Language:
-            .event-details.language= @event.language
+            #language.event-details= @event.language
           .event-details-container
             %label
               %strong.event-label Contact:
-            .event-details.contact= @event.contact
+            #contact.event-details= @event.contact
 
 #image-modal.modal.fade(aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1")
   .modal-dialog
