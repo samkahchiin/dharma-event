@@ -1,4 +1,8 @@
+require_relative "navbar"
+
 class HomePage < SitePrism::Page
+  include NavBar
+
   element :start_date_filter, "#start-date-filter"
   element :end_date_filter, "#end-date-filter"
 
@@ -22,6 +26,8 @@ class EventShowPage < SitePrism::Page
   element :start_time, ".general-content-row .start-time"
   element :detailed_start_time, ".detailed-content-row .start-time"
   element :detailed_end_time, ".end-time"
+  element :delete_button, "#delete-button"
+  element :edit_button, "#edit-button"
 
   class Price < SitePrism::Section
     element :amount, ".amount"

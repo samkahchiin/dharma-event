@@ -10,21 +10,21 @@
     #main-collapse-navbar.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right
         - if current_user
-          %li.dropdown
+          %li#user-dropdown.dropdown
             = link_to "#", { "data-toggle": "dropdown", class: "dropdown-toggle", "aria-haspopup": "true", "aria-expanded": "false" } do
               = current_user.email
               %span.caret
             %ul.dropdown-menu.col-xs-12
               - if current_user.try(:admin?)
-                %li= link_to "Admin", admin_root_path
-              %li= link_to "Sign out", destroy_user_session_path, method: :delete
+                %li#admin= link_to "Admin", admin_root_path
+              %li#sign-out= link_to "Sign out", destroy_user_session_path, method: :delete
         - else
           %li
-            = link_to "LOG IN", new_user_session_path
+            #log-in= link_to "LOG IN", new_user_session_path
           %li
-            = link_to "SIGN UP", new_user_registration_path
+            #sign-up= link_to "SIGN UP", new_user_registration_path
         %li.create-event
           - if current_user
-            = link_to "NEW EVENT", new_event_path
+            .new-event= link_to "NEW EVENT", new_event_path
           - else
-            = link_to "NEW EVENT", new_user_session_path
+            .new-event= link_to "NEW EVENT", new_user_session_path

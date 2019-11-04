@@ -1,6 +1,7 @@
 require "rails_helper"
 
 feature "event", js: true, type: :feature do
+  let(:current_user) { create :user }
   let(:event1) do
     create :event, :approved,
           start_time: Date.today + 1.day
@@ -9,7 +10,8 @@ feature "event", js: true, type: :feature do
   let(:event2)  do
     create :event, :approved,
           start_time: Date.today + 1.year,
-          end_time: Date.today + 370.days
+          end_time: Date.today + 370.days,
+          user: current_user
   end
 
   let!(:approved_events) do
@@ -78,6 +80,33 @@ feature "event", js: true, type: :feature do
       expect(prices.first.amount.text).to eq event1.prices.second.amount.to_s
       expect(prices.second.price_type.text).to eq event1.prices.first.price_type
       expect(prices.second.amount.text).to eq event1.prices.first.amount.to_s
+    end
+
+    describe "when the current user is not the author" do
+      it "should not show edit and delete button" do
+        expect { event_show_page.delete_button }.to raise_error Capybara::ElementNotFound
+        expect { event_show_page.edit_button }.to raise_error Capybara::ElementNotFound
+      end
+    end
+  end
+
+  describe "edit" do
+    let(:home_page) do
+      visit root_path
+      home_page = HomePage.new
+      sign_in current_user
+    end
+    let(:event_show_page) do
+      home_page
+      click_on event1.title.text
+      EventShowPage.new
+    end
+
+    describe "when the current user is the author" do
+      it "clicking delete button should delete the event" do
+        event_show_page
+
+      end
     end
   end
 end
